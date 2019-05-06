@@ -1,7 +1,7 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## Xeno
+## XenoApp
 
 Copyright (c) 2019 Rémi Delhaye <remi@slaask.com>
 

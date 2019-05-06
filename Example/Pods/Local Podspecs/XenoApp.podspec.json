@@ -1,5 +1,5 @@
 {
-  "name": "Xeno",
+  "name": "XenoApp",
   "version": "0.1.3",
   "summary": "Attract, convert, and keep customers through the power of live response",
   "description": "Xeno is an online tool designed to help attract, convert, and keep customers through the power of live response.\n\nYou can access all of Xeno features for free and for an unlimited time. Only pay to customize Xeno to better reflect your brand in the eyes of your customers.",
@@ -19,5 +19,5 @@
   "platforms": {
     "ios": "9.0"
   },
-  "source_files": "Xeno/Classes/**/*"
+  "source_files": "XenoApp/Classes/**/*"
 }

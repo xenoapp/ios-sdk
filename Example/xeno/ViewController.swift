@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Xeno
+import XenoApp
 
 class ViewController: UIViewController {
 

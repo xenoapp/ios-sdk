@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double XenoVersionNumber;
-FOUNDATION_EXPORT const unsigned char XenoVersionString[];
+FOUNDATION_EXPORT double XenoAppVersionNumber;
+FOUNDATION_EXPORT const unsigned char XenoAppVersionString[];
 

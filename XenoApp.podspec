@@ -7,8 +7,8 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'Xeno'
-  s.version          = '0.1.3'
+  s.name             = 'XenoApp'
+  s.version          = '0.1.5'
   s.summary          = 'Attract, convert, and keep customers through the power of live response'
 
 # This description is used to generate tags and improve search results.
@@ -24,9 +24,9 @@ You can access all of Xeno features for free and for an unlimited time. Only pay
                        DESC
 
   s.homepage         = 'https://github.com/xenoapp/ios-sdk'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots      = 'https://s3.amazonaws.com/assets.xenoapp.com/ios-sdk-1.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Rémi Delhaye' => 'remi@slaask.com' }
+  s.author           = { 'Xeno' => 'contact@xenoapp.com' }
   s.source           = { :git => 'https://github.com/xenoapp/ios-sdk.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/xenoapp/ios-sdk'
 

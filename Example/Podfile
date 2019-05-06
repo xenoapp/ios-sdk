@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'xeno_Example' do
-  pod 'Xeno', :path => '../'
+  pod 'XenoApp', :path => '../'
 
   target 'xeno_Tests' do
     inherit! :search_paths

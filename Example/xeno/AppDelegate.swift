@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Xeno
+import XenoApp
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -1,5 +1,5 @@
 import XCTest
-import Xeno
+import XenoApp
 
 class Tests: XCTestCase {
     
