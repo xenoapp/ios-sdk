@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'XenoApp'
-  s.version          = '0.1.6'
+  s.version          = '0.1.7'
   s.summary          = 'Attract, convert, and keep customers through the power of live response'
   s.description      = <<-DESC
 Xeno is an online tool designed to help attract, convert, and keep customers through the power of live response.
@@ -18,5 +18,5 @@ You can access all of Xeno features for free and for an unlimited time. Only pay
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'Xeno/Classes/**/*'
+  s.source_files = 'XenoApp/Classes/**/*'
 end

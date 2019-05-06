@@ -1,6 +1,8 @@
 use_frameworks!
 
 target 'xeno_Example' do
+  platform :ios, '9.0'
+
   pod 'XenoApp', :path => '../'
 
   target 'xeno_Tests' do
