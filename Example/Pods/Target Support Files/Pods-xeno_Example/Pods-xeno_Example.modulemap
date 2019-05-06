@@ -1,0 +1,6 @@
+framework module Pods_xeno_Example {
+  umbrella header "Pods-xeno_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

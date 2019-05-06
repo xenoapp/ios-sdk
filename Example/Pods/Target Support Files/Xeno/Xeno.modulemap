@@ -1,0 +1,6 @@
+framework module Xeno {
+  umbrella header "Xeno-umbrella.h"
+
+  export *
+  module * { export * }
+}

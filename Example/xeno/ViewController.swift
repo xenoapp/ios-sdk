@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Xeno
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        Xeno.sharedInstance.show()
     }
 
     override func didReceiveMemoryWarning() {

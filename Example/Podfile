@@ -1,11 +1,11 @@
 use_frameworks!
 
 target 'xeno_Example' do
-  pod 'xeno', :path => '../'
+  pod 'Xeno', :path => '../'
 
   target 'xeno_Tests' do
     inherit! :search_paths
 
-    
+
   end
 end

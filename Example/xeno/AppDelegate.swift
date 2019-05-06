@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Xeno
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        Xeno.sharedInstance.prepare(apiKey: "xpk-69ca5a77-c490-4ae0-b092-b1d660e892af")
         // Override point for customization after application launch.
         return true
     }
