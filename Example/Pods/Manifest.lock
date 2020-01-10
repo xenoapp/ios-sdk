@@ -1,5 +1,5 @@
 PODS:
-  - XenoApp (0.1.6)
+  - XenoApp (0.2.2)
 
 DEPENDENCIES:
   - XenoApp (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  XenoApp: 610651f684aea8643474aadeee662ddf22ac9be2
+  XenoApp: 6e1ad4beea59c044ecce2a02d3d6b97ae83f3386
 
 PODFILE CHECKSUM: d0be96c3d31cea5bcb26aa2ad3d40d569362ea0a
 
-COCOAPODS: 1.7.0.rc.1
+COCOAPODS: 1.8.4

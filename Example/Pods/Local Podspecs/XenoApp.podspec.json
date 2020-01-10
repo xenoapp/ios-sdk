@@ -1,6 +1,6 @@
 {
   "name": "XenoApp",
-  "version": "0.1.6",
+  "version": "0.2.2",
   "summary": "Attract, convert, and keep customers through the power of live response",
   "description": "Xeno is an online tool designed to help attract, convert, and keep customers through the power of live response.\n\nYou can access all of Xeno features for free and for an unlimited time. Only pay to customize Xeno to better reflect your brand in the eyes of your customers.",
   "homepage": "https://github.com/xenoapp/ios-sdk",
@@ -14,12 +14,13 @@
   },
   "source": {
     "git": "https://github.com/xenoapp/ios-sdk.git",
-    "tag": "0.1.6"
+    "tag": "0.2.2"
   },
   "social_media_url": "https://twitter.com/xenocares",
   "swift_versions": "4.0",
   "platforms": {
     "ios": "9.0"
   },
-  "source_files": "XenoApp/Classes/**/*"
+  "source_files": "XenoApp/Classes/**/*",
+  "swift_version": "4.0"
 }

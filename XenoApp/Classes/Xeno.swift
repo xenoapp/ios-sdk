@@ -24,8 +24,7 @@ public final class Xeno: NSObject {
     
     public var containerViewColor =  UIColor.gray
     
-    public var previousBarColor = UIApplication.shared.statusBarView?.backgroundColor
-    public var currentStatusBarColorHex : String?
+    public var brandColorHex : String?
     
     internal override init() {
         self.identity = ["id": UIDevice.current.identifierForVendor!.uuidString, "name": "Unknown", "kind": "lead"]
@@ -55,10 +54,10 @@ public final class Xeno: NSObject {
         let task    = session.dataTask(with: url) { data, response, error in
             
             guard let data = data else { return }
-            self.currentStatusBarColorHex = String(data: data, encoding: .utf8)!
+            self.brandColorHex = String(data: data, encoding: .utf8)!
             
             DispatchQueue.main.async {
-                UIApplication.shared.statusBarView?.backgroundColor = UIColor(hexString: self.currentStatusBarColorHex!)
+//                UIApplication.shared.statusBarView?.backgroundColor = UIColor(hexString: self.currentStatusBarColorHex!)
                 
                 if self.xenoView == nil || self.containerView == nil {
                     self.createXenoView()
@@ -126,16 +125,10 @@ public final class Xeno: NSObject {
             "</head><style>.slaask-button { display: none !important; }</style>" +
             
             "<script>" +
-            "document.addEventListener('xeno.ready', function()  {" +
-            "window._xeno.show();" +
-            "document.getElementById('ios-lds-dual-ring').remove()" +
-            "}, false);" +
-            
             "window._xenoSettings = {key: '\(apiKey)', options: { native_sdk: true }" +
-            "\(identifyString)" +
-            "};" +
+            "\(identifyString),onInit: function(_xeno) {_xeno.on('ready', function(){_xeno.show()});document.getElementById('ios-lds-dual-ring').remove()}};" +
             "</script>" +
-            "<script src=\"https://cdn.xenoapp.com/chat_loader.js\"></script><body><style>.lds-dual-ring {display: inline-block;width: 100%;height: 100%;}.lds-dual-ring:after {content: ' ';display: block;width: 100px;height: 100px;margin: calc(100% - 100px) auto auto auto;border-radius: 50%;border: 5px solid \(currentStatusBarColorHex!);border-color: \(currentStatusBarColorHex!) transparent \(currentStatusBarColorHex!) transparent;animation: lds-dual-ring 1.2s linear infinite;}@keyframes lds-dual-ring {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}</style><div id=\"ios-lds-dual-ring\" class=\"lds-dual-ring\"></div></body></html>", baseURL: nil)
+            "<script src=\"https://cdn.xeno.app/chat_loader.js\"></script><body><style>.lds-dual-ring {display: inline-block;width: 100%;height: 100%;}.lds-dual-ring:after {content: ' ';display: block;width: 100px;height: 100px;margin: calc(100% - 100px) auto auto auto;border-radius: 50%;border: 5px solid \(brandColorHex!);border-color: \(brandColorHex!) transparent \(brandColorHex!) transparent;animation: lds-dual-ring 1.2s linear infinite;}@keyframes lds-dual-ring {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}</style><div id=\"ios-lds-dual-ring\" class=\"lds-dual-ring\"></div></body></html>", baseURL: nil)
         
     }
     
@@ -163,14 +156,10 @@ public final class Xeno: NSObject {
 extension Xeno : XENOViewDelegate {
     
     func webViewDidFinishLoad() {
-        //        UIApplication.shared.statusBarView?.backgroundColor = currentStatusBarColor
     }
     
     
     internal func closeButtonPressed() {
-        
-        UIApplication.shared.statusBarView?.backgroundColor = previousBarColor
-        
         dismiss()
     }
     
