@@ -45,6 +45,11 @@ extension XenoView : UIWebViewDelegate {
 
     internal func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
 
+        
+        if request.url?.scheme == "tel" {
+            UIApplication.shared.openURL(request.url!)
+        }
+        
         if request.url?.scheme == "xeno" {
 
             if request.url?.host == "closeButtonPressed" {
@@ -55,9 +60,7 @@ extension XenoView : UIWebViewDelegate {
         }
 
         if navigationType == .linkClicked {
-
             if request.url != nil {
-
                 xenoDelegate?.openLink(url: request.url!)
             }
         }
