@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'XenoApp'
-  s.version          = '0.2.4'
+  s.version          = '0.2.5'
   s.summary          = 'Attract, convert, and keep customers through the power of live response'
   s.description      = <<-DESC
 Xeno is an online tool designed to help attract, convert, and keep customers through the power of live response.
