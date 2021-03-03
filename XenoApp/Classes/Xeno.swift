@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-public final class Xeno: NSObject {
+@objcMembers public final class Xeno: NSObject {
     
     // MARK: Public Var
     
