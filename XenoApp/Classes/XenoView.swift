@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 internal protocol XENOViewDelegate {
     func closeButtonPressed()
@@ -14,14 +15,14 @@ internal protocol XENOViewDelegate {
     func openLink(url: URL)
 }
 
-internal class XenoView: UIWebView {
+internal class XenoView: WKWebView {
 
     internal var xenoDelegate : XENOViewDelegate?
 
-    internal override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupWebView()
-    }
+//    override convenience init(frame: CGRect) {
+//        super.init(frame: frame)
+//        setupWebView()
+//    }
 
     internal required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -33,7 +34,7 @@ internal class XenoView: UIWebView {
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         self.scrollView.bounces = false
-        self.delegate = self
+//        self.delegate = self
     }
 }
 
@@ -66,7 +67,6 @@ extension XenoView : UIWebViewDelegate {
         }
 
         if navigationType == .other {
-
             return true
         }
 

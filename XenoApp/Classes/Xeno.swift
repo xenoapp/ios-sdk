@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 import SafariServices
 
 @objcMembers public final class Xeno: NSObject {
@@ -39,7 +40,9 @@ import SafariServices
     
     // MARK: Private Var
     
-    private var xenoView : XenoView?
+    private var xenoView : WKWebView?
+    
+    private var xenoViewDelegate: WKNavigationDelegate?
     
     private var containerView : UIView?
     
@@ -94,9 +97,22 @@ import SafariServices
         self.containerView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.containerView?.backgroundColor = containerViewColor
         
-        xenoView = XenoView.init(frame: (CGRect(x: 0, y: 0, width: (self.view()?.bounds.size.width)!, height: (self.view()?.bounds.size.height)! - 0)))
-        xenoView?.setupWebView()
-        xenoView?.xenoDelegate = self
+        let config = WKWebViewConfiguration()
+        
+        xenoView = WKWebView(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), configuration: config)
+        
+        xenoView!.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
+    }
+    
+    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if let key = change?[NSKeyValueChangeKey.newKey] {
+            if "\(key)".contains("closeButtonPressed") {
+                containerView?.removeFromSuperview()
+                xenoView?.removeFromSuperview()
+                xenoView = nil
+            }
+            print("observeValue \(key)") // url value
+        }
     }
     
     private func loadXenoView() {
@@ -121,14 +137,16 @@ import SafariServices
             identifyString = identifyString.appending("}}")
         }
         
-        xenoView?.loadHTMLString("<!DOCTYPE html><html><head>" +
+        xenoView!.load(URLRequest(url: URL(string: "https://xeno.app/empty.html")!))
+        
+        xenoView?.loadHTMLString("<!DOCTYPE html><html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" +
             "</head><style>.slaask-button { display: none !important; }</style>" +
             
             "<script>" +
             "window._xenoSettings = {key: '\(apiKey)', options: { native_sdk: true }" +
             "\(identifyString),onInit: function(_xeno) {_xeno.on('ready', function(){_xeno.show()});document.getElementById('ios-lds-dual-ring').remove()}};" +
             "</script>" +
-            "<script src=\"https://cdn.xeno.app/chat_loader.js\"></script><body><style>.lds-dual-ring {display: inline-block;width: 100%;height: 100%;}.lds-dual-ring:after {content: ' ';display: block;width: 100px;height: 100px;margin: calc(100% - 100px) auto auto auto;border-radius: 50%;border: 5px solid \(brandColorHex!);border-color: \(brandColorHex!) transparent \(brandColorHex!) transparent;animation: lds-dual-ring 1.2s linear infinite;}@keyframes lds-dual-ring {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}</style><div id=\"ios-lds-dual-ring\" class=\"lds-dual-ring\"></div></body></html>", baseURL: nil)
+            "<script src=\"https://cdn.xeno.app/chat_loader.js\"></script><body><style>.lds-dual-ring {display: inline-block;width: 100%;height: 100%;}.lds-dual-ring:after {content: ' ';display: block;width: 100px;height: 100px;margin: calc(100% - 100px) auto auto auto;border-radius: 50%;border: 5px solid \(brandColorHex!);border-color: \(brandColorHex!) transparent \(brandColorHex!) transparent;animation: lds-dual-ring 1.2s linear infinite;}@keyframes lds-dual-ring {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}</style><div id=\"ios-lds-dual-ring\" class=\"lds-dual-ring\"></div></body></html>", baseURL: URL(string: "https://xeno.app/empty.html")!)
         
     }
     
@@ -148,24 +166,6 @@ import SafariServices
         }
         
         return nil
-    }
-}
-
-// MARK: XENOViewDelegate
-
-extension Xeno : XENOViewDelegate {
-    
-    func webViewDidFinishLoad() {
-    }
-    
-    
-    internal func closeButtonPressed() {
-        dismiss()
-    }
-    
-    internal func openLink(url: URL) {
-        let svc = SFSafariViewController(url: url)
-        self.topViewController()?.present(svc, animated: true, completion: nil)
     }
 }
 
